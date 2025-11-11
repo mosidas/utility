@@ -130,7 +130,6 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:war
 
 
 #### C# Formatting Rules ####
-
 # New line preferences
 csharp_new_line_before_catch = true
 csharp_new_line_before_else = true
@@ -178,7 +177,6 @@ csharp_preserve_single_line_statements = true
 
 #### Naming styles ####
 # Naming rules
-
 dotnet_naming_rule.types_and_namespaces_should_be_pascalcase.severity = warning
 dotnet_naming_rule.types_and_namespaces_should_be_pascalcase.symbols = types_and_namespaces
 dotnet_naming_rule.types_and_namespaces_should_be_pascalcase.style = pascalcase
@@ -256,7 +254,6 @@ dotnet_naming_rule.non_field_members_should_be_pascalcase.symbols = non_field_me
 dotnet_naming_rule.non_field_members_should_be_pascalcase.style = pascalcase
 
 # Symbol specifications
-
 dotnet_naming_symbols.interfaces.applicable_kinds = interface
 dotnet_naming_symbols.interfaces.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.interfaces.required_modifiers =
@@ -334,7 +331,6 @@ dotnet_naming_symbols.local_functions.applicable_accessibilities = *
 dotnet_naming_symbols.local_functions.required_modifiers =
 
 # Naming styles
-
 dotnet_naming_style.pascalcase.required_prefix =
 dotnet_naming_style.pascalcase.required_suffix =
 dotnet_naming_style.pascalcase.word_separator =
@@ -365,3 +361,8 @@ dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator =
 dotnet_naming_style.s_camelcase.capitalization = camel_case
 
+# code metrics rules
+dotnet_diagnostic.CA1501.severity = warning # 継承階層
+dotnet_diagnostic.CA1502.severity = warning # 循環的複雑度
+dotnet_diagnostic.CA1505.severity = warning # 保守容易性指数
+dotnet_diagnostic.CA1506.severity = warning # クラス結合度

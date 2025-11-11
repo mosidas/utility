@@ -19,4 +19,8 @@
     <PackageReference Include="Meziantou.Framework.Win32.CredentialManager" Version="1.7.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="../../CodeMetricsConfig.txt" />
+  </ItemGroup>
+
 </Project>

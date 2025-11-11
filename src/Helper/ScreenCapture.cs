@@ -229,7 +229,7 @@ public class ScreenCapture
 
     try
     {
-      var startInfo = new ProcessStartInfo
+      ProcessStartInfo startInfo = new()
       {
         FileName = "screencapture",
         Arguments = $"-x -t png \"{tempFile}\"",
@@ -239,12 +239,7 @@ public class ScreenCapture
         CreateNoWindow = true
       };
 
-      using var process = Process.Start(startInfo);
-      if (process == null)
-      {
-        throw new InvalidOperationException("Failed to start screencapture process");
-      }
-
+      using Process? process = Process.Start(startInfo) ?? throw new InvalidOperationException("Failed to start screencapture process");
       await process.WaitForExitAsync();
 
       if (process.ExitCode != 0)
@@ -271,7 +266,7 @@ public class ScreenCapture
 
     try
     {
-      var startInfo = new ProcessStartInfo
+      ProcessStartInfo startInfo = new()
       {
         FileName = "screencapture",
         Arguments = $"-x -t png \"{tempFile}\"",
@@ -281,12 +276,7 @@ public class ScreenCapture
         CreateNoWindow = true
       };
 
-      using var process = Process.Start(startInfo);
-      if (process == null)
-      {
-        throw new InvalidOperationException("Failed to start screencapture process");
-      }
-
+      using Process? process = Process.Start(startInfo) ?? throw new InvalidOperationException("Failed to start screencapture process");
       await process.WaitForExitAsync();
 
       if (process.ExitCode != 0)
@@ -327,7 +317,7 @@ public class ScreenCapture
 
   private static async Task<List<string>> GetMacOSDisplayIdsAsync()
   {
-    var startInfo = new ProcessStartInfo
+    ProcessStartInfo startInfo = new()
     {
       FileName = "system_profiler",
       Arguments = "SPDisplaysDataType",
@@ -336,11 +326,7 @@ public class ScreenCapture
       CreateNoWindow = true
     };
 
-    using var process = Process.Start(startInfo);
-    if (process == null)
-    {
-      throw new InvalidOperationException("Failed to start system_profiler process");
-    }
+    using Process? process = Process.Start(startInfo) ?? throw new InvalidOperationException("Failed to start system_profiler process");
 
     string output = await process.StandardOutput.ReadToEndAsync();
     await process.WaitForExitAsync();
@@ -348,7 +334,7 @@ public class ScreenCapture
     // ディスプレイ数を推定（簡易実装）
     // 実際にはディスプレイIDを正確に取得する必要がありますが、
     // 簡易的に1つのディスプレイとして扱う
-    var displayIds = new List<string> { "1" };
+    List<string> displayIds = ["1"];
 
     return displayIds;
   }
@@ -359,7 +345,7 @@ public class ScreenCapture
 
     try
     {
-      var startInfo = new ProcessStartInfo
+      ProcessStartInfo startInfo = new()
       {
         FileName = "screencapture",
         Arguments = $"-x -D {displayId} -t png \"{tempFile}\"",
@@ -369,12 +355,7 @@ public class ScreenCapture
         CreateNoWindow = true
       };
 
-      using var process = Process.Start(startInfo);
-      if (process == null)
-      {
-        throw new InvalidOperationException("Failed to start screencapture process");
-      }
-
+      using Process? process = Process.Start(startInfo) ?? throw new InvalidOperationException("Failed to start screencapture process");
       await process.WaitForExitAsync();
 
       if (process.ExitCode != 0)
